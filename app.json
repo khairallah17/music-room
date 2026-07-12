@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "Music Room",
+    "slug": "music-room",
+    "scheme": "musicroom",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#050507",
+    "ios": { "supportsTablet": false },
+    "android": { "package": "com.musicroom.app" }
+  }
+}
