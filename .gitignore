@@ -1,11 +1,12 @@
 # dependencies
 node_modules/
 
+.claude/
+
 # expo
 .expo/
 dist/
 web-build/
-expo-env.d.ts
 
 # native prebuild output (managed workflow — regenerate with `npx expo prebuild`)
 android/
@@ -33,3 +34,6 @@ yarn-error.*
 # editor
 .vscode/
 .idea/
+
+# python
+venv/
