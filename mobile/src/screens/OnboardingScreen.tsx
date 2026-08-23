@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Text } from 'tamagui';
@@ -7,13 +7,17 @@ import { colors, spacing, radii, typography, shadows } from '@/constants/tokens'
 import { GradientButton } from '@/components/GradientButton';
 import { VoteControl } from '@/components/VoteControl';
 
-/** 01 · Onboarding — Spotify auth + guest fallback. */
+/** 01 · Onboarding — email/password + Google auth entry points. */
 export function OnboardingScreen({
-  onContinue,
-  onGuest,
+  onLogin,
+  onSignup,
+  onContinueWithGoogle,
+  onOpenDevSettings,
 }: {
-  onContinue?: () => void;
-  onGuest?: () => void;
+  onLogin?: () => void;
+  onSignup?: () => void;
+  onContinueWithGoogle?: () => void;
+  onOpenDevSettings?: () => void;
 }) {
   return (
     <View style={{ flex: 1, backgroundColor: colors.base }}>
@@ -24,6 +28,13 @@ export function OnboardingScreen({
       <SafeAreaView
         style={{ flex: 1, paddingHorizontal: spacing.xxl, justifyContent: 'space-between' }}
       >
+        <Pressable
+          onPress={onOpenDevSettings}
+          hitSlop={12}
+          style={{ position: 'absolute', top: spacing.md, right: spacing.xl, zIndex: 1 }}
+        >
+          <Text style={{ ...typography.caption, color: colors.textQuaternary }}>⚙︎</Text>
+        </Pressable>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <LinearGradient
             colors={colors.accentGradient}
@@ -85,8 +96,13 @@ export function OnboardingScreen({
         </View>
 
         <View style={{ gap: spacing.sm, paddingBottom: spacing.xl }}>
-          <GradientButton label="Continue with Spotify" variant="spotify" onPress={onContinue} />
-          <GradientButton label="Continue as a guest" variant="ghost" onPress={onGuest} />
+          <GradientButton label="Log in" onPress={onLogin} />
+          <GradientButton label="Sign up" variant="secondary" onPress={onSignup} />
+          <GradientButton
+            label="Continue with Google"
+            variant="secondary"
+            onPress={onContinueWithGoogle}
+          />
         </View>
       </SafeAreaView>
     </View>

@@ -11,6 +11,8 @@ module.exports = function (api) {
           logTimings: true,
         },
       ],
+      // must stay last per react-native-reanimated's setup requirements
+      'react-native-reanimated/plugin',
     ],
   };
 };
